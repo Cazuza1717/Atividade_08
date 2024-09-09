@@ -56,6 +56,6 @@ public class Financeiro {
     public double totalConta(){
         double total = calcularTotalEntradas() - calcularTotalDespesas();
         System.out.println("O total em conta é: " + total);
-        return totalConta();
+        return total;
     }
 }

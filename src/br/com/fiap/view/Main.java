@@ -53,8 +53,11 @@ public class Main {
                     System.out.print("Digite a senha: ");
                     String senha = scanner.nextLine();
 
+                    login.setEntrar(loginUser);
+                    login.setSenha(senha);
+
                     if (login.doLogin(loginUser, senha, user)) {
-                        System.out.println("Seja bem-vindo " + user.getName() + "\n O seu saldo é de " + financeiro.totalConta());
+                        System.out.println("Seja bem-vindo " + user.getName());
                         boolean sair = false;
                         while (!sair) {
                             System.out.println("\nSaldo atual: " + financeiro.totalConta() + "\nInsira uma opção: \n1 - Despesas\n2 - Entradas\n0 - Para sair da conta");
@@ -75,9 +78,18 @@ public class Main {
                                                 scanner.nextLine();
                                                 System.out.println("Insira uma descrição: ");
                                                 String descricaoDespesa = scanner.nextLine();
-
+                                                System.out.println("Foi parcelado?  s/n: ");
+                                                String parcelado = scanner.nextLine();
+                                                if(parcelado.equals("s")){
+                                                    System.out.println("quantas vezes ?");
+                                                    int parcelas = scanner.nextInt();
+                                                    System.out.println("qual o valor total ?");
+                                                    double valorTotal = scanner.nextDouble();
+                                                    Despesas despesas = new Despesas(valorDespesa, descricaoDespesa, parcelas, valorTotal);
+                                                    financeiro.adicionarDespesa(despesas);
+                                                }else{
                                                 Despesas despesa = new Despesas(valorDespesa, descricaoDespesa);
-                                                financeiro.adicionarDespesa(despesa);
+                                                financeiro.adicionarDespesa(despesa);}
                                                 break;
                                             case 2:
                                                 financeiro.exibirDespesas();

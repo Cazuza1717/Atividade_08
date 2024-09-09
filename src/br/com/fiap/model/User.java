@@ -87,17 +87,8 @@ public class User {
          }
 
         public void cadastroSenha (String password){
-            while (true) {
-                System.out.print("Insira uma senha numerica de 4 digitos: ");
-                if (password.matches("\\d{4}")) {
-                    this.password = password;
-                    System.out.println("Usuário cadastrado com sucesso!");
-                    return;
-                } else {
-                    System.out.println("Senha inválida. A senha deve ter exatamente 4 dígitos numéricos.");
-                    return;
-                }
-            }
+            this.password = password;
+            System.out.println("Usuário cadastrado com sucesso!");
         }
 
 
